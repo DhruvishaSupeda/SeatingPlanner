@@ -15,13 +15,19 @@ using System.Windows.Shapes;
 namespace SeatingPlanner
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Window2.xaml
     /// </summary>
-    public partial class AddStudentWindow : Window
+    public partial class SortStudentWindow : Window
     {
-        public AddStudentWindow()
+        public SortStudentWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
         }
     }
 }

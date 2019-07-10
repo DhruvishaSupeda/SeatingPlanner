@@ -24,5 +24,17 @@ namespace SeatingPlanner
         {
             InitializeComponent();
         }
+
+        private void BtnSort_Click(object sender, RoutedEventArgs e)
+        {
+            new SortStudentWindow().Show();
+            this.Close();
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            new AddStudentWindow().Show();
+            this.Close();
+        }
     }
 }
