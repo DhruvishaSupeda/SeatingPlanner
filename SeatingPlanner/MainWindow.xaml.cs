@@ -20,6 +20,8 @@ namespace SeatingPlanner
     /// </summary>
     public partial class MainWindow : Window
     {
+        DBConnect db = new DBConnect();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +37,21 @@ namespace SeatingPlanner
         {
             new AddStudentWindow().Show();
             this.Close();
+        }
+
+        private void BtnDB_Click(object sender, RoutedEventArgs e)
+        {
+            int length = db.Select().Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                List<string> selected = db.Select()[i];
+                foreach (string item in selected)
+                {
+                    Console.Write(item);
+                    Console.WriteLine();
+                }
+            }
         }
     }
 }

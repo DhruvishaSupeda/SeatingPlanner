@@ -1,6 +1,8 @@
 ﻿using System;
 //Add MySql Library
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace SeatingPlanner
 {
@@ -153,9 +155,9 @@ namespace SeatingPlanner
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    list[0].Add(dataReader["id"] + "");
-                    list[1].Add(dataReader["name"] + "");
-                    list[2].Add(dataReader["age"] + "");
+                    list[0].Add(dataReader["idstudent"] + "");
+                    list[1].Add(dataReader["forename"] + "");
+                    list[2].Add(dataReader["surname"] + "");
                 }
 
                 //close Data Reader
@@ -174,18 +176,18 @@ namespace SeatingPlanner
         }
 
         //Count statement
-        public int Count()
-        {
-        }
+        //public int Count()
+        //{
+       // }
 
         //Backup
-        public void Backup()
-        {
-        }
+       // public void Backup()
+       // {
+       // }
 
         //Restore
-        public void Restore()
-        {
-        }
+      //  public void Restore()
+       // {
+      //  }
     }
 }

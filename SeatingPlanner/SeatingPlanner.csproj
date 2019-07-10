@@ -59,6 +59,7 @@
     <Compile Include="AddStudentWindow.xaml.cs">
       <DependentUpon>AddStudentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DBConnect.cs" />
     <Compile Include="SortStudentWindow.xaml.cs">
       <DependentUpon>SortStudentWindow.xaml</DependentUpon>
     </Compile>
