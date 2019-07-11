@@ -41,6 +41,9 @@ namespace SeatingPlanner
 
         private void BtnDB_Click(object sender, RoutedEventArgs e)
         {
+           // db.Insert();
+            Console.WriteLine("Done a thing");
+
             int length = db.Select().Length;
 
             for (int i = 0; i < length; i++)

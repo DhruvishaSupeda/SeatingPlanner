@@ -22,6 +22,15 @@ namespace SeatingPlanner
         public AddStudentWindow()
         {
             InitializeComponent();
+            dprDOB.SelectedDate = new DateTime(2006, 1, 1);
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            string forename = txtForename.Text;
+            string surname = txtSurname.Text;
+            string dob = (dprDOB.SelectedDate.Value).ToString("yyyy-MM-dd");
+
         }
     }
 }
