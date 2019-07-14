@@ -19,10 +19,13 @@ namespace SeatingPlanner
     /// </summary>
     public partial class AddStudentWindow : Window
     {
+        readonly DBConnect db = new DBConnect();
+
         public AddStudentWindow()
         {
             InitializeComponent();
             dprDOB.SelectedDate = new DateTime(2006, 1, 1);
+            rdbFemale.IsChecked = true;
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -30,7 +33,31 @@ namespace SeatingPlanner
             string forename = txtForename.Text;
             string surname = txtSurname.Text;
             string dob = (dprDOB.SelectedDate.Value).ToString("yyyy-MM-dd");
+            string gender = "";
+            int window = 0;
+            int door = 0;
+            int front = 0;
+            if (rdbFemale.IsChecked == true)
+            {
+                gender = "Female";
+            }
+            else
+                gender = "Male";
 
+            if (chbxWindow.IsChecked == true)
+            {
+                window = 1;
+            }
+            if (chbxDoor.IsChecked == true)
+            {
+                door = 1;
+            }
+            if (chbxFront.IsChecked == true)
+            {
+                front = 1;
+            }
+
+            db.Insert(forename, surname, gender, dob, window, door, front);
         }
     }
 }

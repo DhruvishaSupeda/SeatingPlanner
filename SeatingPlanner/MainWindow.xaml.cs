@@ -56,5 +56,11 @@ namespace SeatingPlanner
                 }
             }
         }
+
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            new ViewStudentsWindow().Show();
+            this.Close();
+        }
     }
 }

@@ -39,6 +39,7 @@ namespace SeatingPlanner
             try
             {
                 connection.Open();
+                Console.WriteLine("CONNECTED YAASSS");
                 return true;
             }
             catch (MySqlException ex)
@@ -68,6 +69,7 @@ namespace SeatingPlanner
             try
             {
                 connection.Close();
+                Console.WriteLine("UNCONNECTED");
                 return true;
             }
             catch (MySqlException ex)
@@ -81,10 +83,13 @@ namespace SeatingPlanner
         public void Insert(string forename, string surname, string gender, string dob, int window, int door,int front)
         {
             //string query = "INSERT INTO `seating_planner`.`student` (`forename`,`surname`,`gender`,`dob`,`window`,`door`,`front`) " +
-               // "VALUES('Hello','Hello','Female','1999-02-15',0,1,0)";
+                //"VALUES ('Bye','Bye','Female','1999-02-15',0,1,0)";
 
             string query = "INSERT INTO `seating_planner`.`student` (`forename`,`surname`,`gender`,`dob`,`window`,`door`,`front`) " +
-                "VALUES('" + forename + "','" + surname + "','" + gender + "','" + dob + "'," + window + "," + door + "," + front + ")";
+                "VALUES ('" + forename + "','" + surname + "','" + gender + "','" + dob + "'," + window + "," + door + "," + front + ")";
+
+            Console.WriteLine(query);
+            Console.WriteLine("yaaassss");
 
             //open connection
             if (this.OpenConnection() == true)
@@ -94,10 +99,13 @@ namespace SeatingPlanner
 
                 //Execute command
                 cmd.ExecuteNonQuery();
+                Console.WriteLine("xecut4edda a thing");
 
                 //close connection
                 this.CloseConnection();
             }
+            else
+                Console.WriteLine("didn't do a thing");
         }
 
         //Update statement
