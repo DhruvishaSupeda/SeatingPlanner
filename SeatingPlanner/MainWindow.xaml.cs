@@ -44,11 +44,13 @@ namespace SeatingPlanner
            // db.Insert();
             Console.WriteLine("Done a thing");
 
-            int length = db.Select().Length;
+            List<string>[] hello = db.Select();
+            int length = hello.Length;
+            Console.WriteLine(length + " is the length");
 
             for (int i = 0; i < length; i++)
             {
-                List<string> selected = db.Select()[i];
+                List<string> selected = hello[i];
                 foreach (string item in selected)
                 {
                     Console.Write(item);

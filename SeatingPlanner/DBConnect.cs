@@ -39,7 +39,6 @@ namespace SeatingPlanner
             try
             {
                 connection.Open();
-                Console.WriteLine("CONNECTED YAASSS");
                 return true;
             }
             catch (MySqlException ex)
@@ -69,7 +68,6 @@ namespace SeatingPlanner
             try
             {
                 connection.Close();
-                Console.WriteLine("UNCONNECTED");
                 return true;
             }
             catch (MySqlException ex)
@@ -88,9 +86,6 @@ namespace SeatingPlanner
             string query = "INSERT INTO `seating_planner`.`student` (`forename`,`surname`,`gender`,`dob`,`window`,`door`,`front`) " +
                 "VALUES ('" + forename + "','" + surname + "','" + gender + "','" + dob + "'," + window + "," + door + "," + front + ")";
 
-            Console.WriteLine(query);
-            Console.WriteLine("yaaassss");
-
             //open connection
             if (this.OpenConnection() == true)
             {
@@ -99,13 +94,10 @@ namespace SeatingPlanner
 
                 //Execute command
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("xecut4edda a thing");
 
                 //close connection
                 this.CloseConnection();
             }
-            else
-                Console.WriteLine("didn't do a thing");
         }
 
         //Update statement
@@ -144,7 +136,57 @@ namespace SeatingPlanner
             }
         }
 
+
         //Select statement
+        public List<string>[] SelectByRow()
+        {
+            string query = "SELECT * FROM student";
+
+            int size = this.SelectID().Count;
+
+            List<string>[] list = new List<string>[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                list[i] = new List<string>();
+            }
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                Console.WriteLine("Opened a thing");
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                int counter = 0;
+                while (dataReader.Read())
+                {
+                    list[counter].Add(dataReader["forename"] + "");
+                    list[counter].Add(dataReader["surname"] + "");
+                    list[counter].Add(dataReader["gender"] + "");
+                    list[counter].Add(dataReader["dob"] + "");
+                    list[counter].Add(dataReader["window"] + "");
+                    list[counter].Add(dataReader["door"] + "");
+                    list[counter].Add(dataReader["front"] + "");
+                    counter += 1;
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
         public List<string>[] Select()
         {
             string query = "SELECT * FROM student";
@@ -186,19 +228,55 @@ namespace SeatingPlanner
             }
         }
 
+        public List<string> SelectID()
+        {
+            string query = "SELECT idstudent FROM student";
+
+            //Create a list to store the result
+            List<string> list = new List<string>();
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    list.Add(dataReader["idstudent"] + "");
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
+
         //Count statement
         //public int Count()
         //{
-       // }
+        // }
 
         //Backup
-       // public void Backup()
-       // {
-       // }
+        // public void Backup()
+        // {
+        // }
 
         //Restore
-      //  public void Restore()
-       // {
-      //  }
+        //  public void Restore()
+        // {
+        //  }
     }
 }

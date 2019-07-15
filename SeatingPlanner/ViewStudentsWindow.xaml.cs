@@ -31,29 +31,41 @@ namespace SeatingPlanner
             //seems the easiest way idk
 
             // Initialize and add a text box column.
-            DataGridColumn column = new DataGridTextColumn();
-            //column.DataPropertyName = "Name";
-            column.Header = "Forename";
-            dtgStudents.Columns.Add(column);
-
+            addColumns();
+            DataGridColumn forename = new DataGridTextColumn();
+            forename.Header = "Forename";
+            DataGridColumn surname = new DataGridTextColumn();
+            surname.Header = "Surname";
+            DataGridColumn gender = new DataGridTextColumn();
+            gender.Header = "Gender";
+            DataGridColumn dob = new DataGridTextColumn();
+            dob.Header = "Date of Birth";
+            DataGridColumn window = new DataGridTextColumn();
+            window.Header = "Near Window (1/0)";
+            DataGridColumn door = new DataGridTextColumn();
+            door.Header = "Near Door (1/0)";
+            DataGridColumn front = new DataGridTextColumn();
+            front.Header = "Near the Front (1/0)";
+            dtgStudents.Columns.Add(forename);
+            dtgStudents.Columns.Add(surname);
+            dtgStudents.Columns.Add(gender);
+            dtgStudents.Columns.Add(dob);
+            dtgStudents.Columns.Add(window);
+            dtgStudents.Columns.Add(door);
+            dtgStudents.Columns.Add(front);
 
             //gets array of lists for everything (which is db.Select())
-            int length = db.Select().Length;
+            int length = db.SelectID().Count;
+            List<string>[] allRows = db.SelectByRow();
             for (int i = 0; i < length; i++)
             {
-                List<string> selected = db.Select()[i];
+                List<string> selected = allRows[i];
                 foreach (string item in selected)
                 {
                     Console.Write(item);
-                    Console.WriteLine();
+                    Console.Write(" ");
                 }
-            }
-
-            List<string> fore = db.Select()[0];
-            int le = fore.Count();
-            for (int j = 0; j < le; j++)
-            {
-
+                Console.WriteLine();
             }
         }
     }
