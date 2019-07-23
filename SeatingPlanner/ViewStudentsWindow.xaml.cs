@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,43 +32,28 @@ namespace SeatingPlanner
             //then show that on the table somehow
             //seems the easiest way idk
 
-            // Initialize and add a text box column.
-            addColumns();
-            DataGridColumn forename = new DataGridTextColumn();
-            forename.Header = "Forename";
-            DataGridColumn surname = new DataGridTextColumn();
-            surname.Header = "Surname";
-            DataGridColumn gender = new DataGridTextColumn();
-            gender.Header = "Gender";
-            DataGridColumn dob = new DataGridTextColumn();
-            dob.Header = "Date of Birth";
-            DataGridColumn window = new DataGridTextColumn();
-            window.Header = "Near Window (1/0)";
-            DataGridColumn door = new DataGridTextColumn();
-            door.Header = "Near Door (1/0)";
-            DataGridColumn front = new DataGridTextColumn();
-            front.Header = "Near the Front (1/0)";
-            dtgStudents.Columns.Add(forename);
-            dtgStudents.Columns.Add(surname);
-            dtgStudents.Columns.Add(gender);
-            dtgStudents.Columns.Add(dob);
-            dtgStudents.Columns.Add(window);
-            dtgStudents.Columns.Add(door);
-            dtgStudents.Columns.Add(front);
-
             //gets array of lists for everything (which is db.Select())
+            //gets number of rows/records
             int length = db.SelectID().Count;
+            //Gets all of the rows and the data in the rows
             List<string>[] allRows = db.SelectByRow();
+            List<Student> list = new List<Student>();
+            //Makes student for each row then adds to list of students
             for (int i = 0; i < length; i++)
             {
                 List<string> selected = allRows[i];
-                foreach (string item in selected)
-                {
-                    Console.Write(item);
-                    Console.Write(" ");
-                }
-                Console.WriteLine();
+                string fore = selected[0];
+                string sur = selected[1];
+                string gend = selected[2];
+                int index = selected[3].IndexOf(' ');
+                string doobb = selected[3].Substring(0, index);
+                int windooww = int.Parse(selected[4]);
+                int doorr = int.Parse(selected[5]);
+                int froont = int.Parse(selected[6]);
+                Student student = new Student(fore, sur, gend, doobb, windooww, doorr, froont);
+                list.Add(student);
             }
+            dtgStudents.ItemsSource = list;
         }
     }
 }

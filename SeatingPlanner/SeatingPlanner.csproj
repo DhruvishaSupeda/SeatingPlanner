@@ -64,6 +64,7 @@
     <Compile Include="SortStudentWindow.xaml.cs">
       <DependentUpon>SortStudentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Student.cs" />
     <Compile Include="ViewStudentsWindow.xaml.cs">
       <DependentUpon>ViewStudentsWindow.xaml</DependentUpon>
     </Compile>
