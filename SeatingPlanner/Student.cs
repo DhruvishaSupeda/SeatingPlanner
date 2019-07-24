@@ -11,8 +11,9 @@ namespace SeatingPlanner
         public int window { get; set; }
         public int door { get; set; }
         public int front { get; set; }
+        public int average_grade { get; set; }
 
-        public Student(string f, string s, string g, string d, int w, int doo, int fro)
+        public Student(string f, string s, string g, string d, int w, int doo, int fro, int avg)
         {
             forename = f;
             surname = s;
@@ -21,6 +22,7 @@ namespace SeatingPlanner
             window = w;
             door = doo;
             front = fro;
+            average_grade = avg;
         }
     }
 }

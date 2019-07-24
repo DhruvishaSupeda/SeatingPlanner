@@ -170,6 +170,7 @@ namespace SeatingPlanner
                     list[counter].Add(dataReader["window"] + "");
                     list[counter].Add(dataReader["door"] + "");
                     list[counter].Add(dataReader["front"] + "");
+                    list[counter].Add(dataReader["average_grade"] + "");
                     counter += 1;
                 }
 
@@ -264,6 +265,7 @@ namespace SeatingPlanner
             }
         }
 
+        //Gets list of Student objects with all the students
         public List<Student> convertStudents()
         {
             //gets number of rows/records
@@ -283,7 +285,8 @@ namespace SeatingPlanner
                 int windooww = int.Parse(selected[4]);
                 int doorr = int.Parse(selected[5]);
                 int froont = int.Parse(selected[6]);
-                Student student = new Student(fore, sur, gend, doobb, windooww, doorr, froont);
+                int avg = int.Parse(selected[7]);
+                Student student = new Student(fore, sur, gend, doobb, windooww, doorr, froont, avg);
                 list.Add(student);
             }
             return list;
