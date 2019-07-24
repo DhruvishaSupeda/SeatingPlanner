@@ -11,13 +11,15 @@
         <Label Content="Sort Students" HorizontalAlignment="Left" Margin="43,30,0,0" VerticalAlignment="Top"/>
         <GroupBox Header="Groupings" HorizontalAlignment="Left" Height="273" Margin="43,89,0,0" VerticalAlignment="Top" Width="221">
             <Grid HorizontalAlignment="Left" Height="253" Margin="10,10,-3,-12.6" VerticalAlignment="Top" Width="201">
-                <RadioButton Content="Boy/Girl" HorizontalAlignment="Left" Margin="44,23,0,0" VerticalAlignment="Top"/>
-                <RadioButton Content="Low-High Achieving" HorizontalAlignment="Left" Margin="44,70,0,0" VerticalAlignment="Top"/>
-                <RadioButton Content="High-Low Achieving" HorizontalAlignment="Left" Margin="44,124,0,0" VerticalAlignment="Top"/>
-                <RadioButton Content="Young-Old Age" HorizontalAlignment="Left" Margin="44,174,0,0" VerticalAlignment="Top"/>
-                <RadioButton Content="Old-Young Age" HorizontalAlignment="Left" Margin="44,228,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rdbGender" Content="Boy/Girl" HorizontalAlignment="Left" Margin="44,23,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rdbGradeAsc" Content="Low-High Achieving" HorizontalAlignment="Left" Margin="44,65,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rdbGradeDesc" Content="High-Low Achieving" HorizontalAlignment="Left" Margin="44,112,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rdbAlpha" Content="Alphabetical by Surname" HorizontalAlignment="Left" Margin="44,151,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rdbAgeAsc" Content="Young-Old Age" HorizontalAlignment="Left" Margin="44,190,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rdbAgeDesc" Content="Old-Young Age" HorizontalAlignment="Left" Margin="44,228,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
+        <Button x:Name="btnSort" Content="Sort" HorizontalAlignment="Left" Margin="565,367,0,0" VerticalAlignment="Top" Width="75" Click="BtnSort_Click"/>
 
     </Grid>
 </Window>
