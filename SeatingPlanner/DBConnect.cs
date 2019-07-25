@@ -78,13 +78,13 @@ namespace SeatingPlanner
         }
 
         //Insert statement
-        public void Insert(string forename, string surname, string gender, string dob, int window, int door,int front)
+        public void Insert(string forename, string surname, string gender, string dob, int window, int door,int front, int grade)
         {
             //string query = "INSERT INTO `seating_planner`.`student` (`forename`,`surname`,`gender`,`dob`,`window`,`door`,`front`) " +
                 //"VALUES ('Bye','Bye','Female','1999-02-15',0,1,0)";
 
-            string query = "INSERT INTO `seating_planner`.`student` (`forename`,`surname`,`gender`,`dob`,`window`,`door`,`front`) " +
-                "VALUES ('" + forename + "','" + surname + "','" + gender + "','" + dob + "'," + window + "," + door + "," + front + ")";
+            string query = "INSERT INTO `seating_planner`.`student` (`forename`,`surname`,`gender`,`dob`,`window`,`door`,`front`,`average_grade`) " +
+                "VALUES ('" + forename + "','" + surname + "','" + gender + "','" + dob + "'," + window + "," + door + "," + front + "," + grade + ")";
 
             //open connection
             if (this.OpenConnection() == true)

@@ -8,14 +8,14 @@
         Title="Add Student" Height="450" Width="800">
     <Grid>
         <Label Content="Add Student" HorizontalAlignment="Left" Margin="59,35,0,0" VerticalAlignment="Top"/>
-        <GroupBox Header="Gender" HorizontalAlignment="Left" Height="53" Margin="82,254,0,0" VerticalAlignment="Top" Width="289">
+        <GroupBox Header="Gender" HorizontalAlignment="Left" Height="53" Margin="82,248,0,0" VerticalAlignment="Top" Width="300">
             <Grid HorizontalAlignment="Left" Height="43" Margin="58,0,0,-12.6" VerticalAlignment="Top" Width="186">
                 <RadioButton x:Name="rdbFemale" Content="Female" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="rdbMale" Content="Male" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Extra Seating Arrangements" HorizontalAlignment="Left" Height="188" Margin="445,95,0,0" VerticalAlignment="Top" Width="215">
+        <GroupBox Header="Extra Seating Arrangements" HorizontalAlignment="Left" Height="188" Margin="447,81,0,0" VerticalAlignment="Top" Width="215">
             <Grid HorizontalAlignment="Left" Height="157" Margin="10,10,0,-1.4" VerticalAlignment="Top" Width="193">
                 <CheckBox x:Name="chbxWindow" Content="Near Window" HorizontalAlignment="Left" Margin="42,21,0,0" VerticalAlignment="Top"/>
                 <CheckBox x:Name="chbxDoor" Content="Near Door" HorizontalAlignment="Left" Margin="42,66,0,0" VerticalAlignment="Top"/>
@@ -34,5 +34,8 @@
         </GroupBox>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="625,325,0,0" VerticalAlignment="Top" Width="75" Click="BtnAdd_Click"/>
         <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="625,371,0,0" VerticalAlignment="Top" Width="75"/>
+        <GroupBox Header="Average Grade" HorizontalAlignment="Left" Height="53" Margin="82,311,0,0" VerticalAlignment="Top" Width="300">
+            <ListBox x:Name="lbxGrade" HorizontalAlignment="Left" Height="23" Margin="122,0,0,0" VerticalAlignment="Top" Width="88"></ListBox>
+        </GroupBox>
     </Grid>
 </Window>

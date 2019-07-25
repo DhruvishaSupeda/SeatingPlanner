@@ -36,6 +36,11 @@ namespace SeatingPlanner
         {
             //Just sorting them into ascending grade for now
             Alphabetical();
+            //So put if front, put the front ones first
+            //Then take this list, do the same with window
+            //Then take that list do the same with door
+            //Then case of whichever one they've picked with the remaining list? Idk how to do window and door maybe it'll somehow work out
+            //If not graphic, just downwards list and put (window) or (door) or (front) next to them
         }
 
         private void AscGrade()
@@ -76,7 +81,7 @@ namespace SeatingPlanner
 
         private void Gender()
         {
-            
+            List<Student> list = db.convertStudents();
         }
 
 

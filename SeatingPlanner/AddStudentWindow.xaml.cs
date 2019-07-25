@@ -26,6 +26,10 @@ namespace SeatingPlanner
             InitializeComponent();
             dprDOB.SelectedDate = new DateTime(2006, 1, 1);
             rdbFemale.IsChecked = true;
+            for (int i = 1; i <= 100; i++)
+            {
+                lbxGrade.Items.Add(i);
+            }
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -56,8 +60,9 @@ namespace SeatingPlanner
             {
                 front = 1;
             }
+            int grade = int.Parse(lbxGrade.SelectedItem.ToString());
 
-            db.Insert(forename, surname, gender, dob, window, door, front);
+            db.Insert(forename, surname, gender, dob, window, door, front, grade);
         }
     }
 }
