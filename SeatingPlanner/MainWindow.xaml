@@ -10,10 +10,24 @@
         <Button x:Name="btnAdd" Content="Add Student" HorizontalAlignment="Left" Margin="289,206,0,0" VerticalAlignment="Top" Width="75" Click="BtnAdd_Click"/>
         <Button x:Name="btnSort" Content="Sort Students" HorizontalAlignment="Left" Margin="122,206,0,0" VerticalAlignment="Top" Width="75" Click="BtnSort_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,60,0,0" TextWrapping="Wrap" Text="Seating Planner 2000" VerticalAlignment="Top"/>
-        <Button x:Name="btnImport" Content="Import Class" HorizontalAlignment="Left" Margin="454,206,0,0" VerticalAlignment="Top" Width="75"/>
         <Label x:Name="lblClass" Content="Current Class:" HorizontalAlignment="Left" Margin="115,333,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnDB" Content="DB Test" HorizontalAlignment="Left" Margin="576,318,0,0" VerticalAlignment="Top" Width="75" Click="BtnDB_Click"/>
         <Button x:Name="btnView" Content="View Class" HorizontalAlignment="Left" Margin="628,206,0,0" VerticalAlignment="Top" Width="75" Click="BtnView_Click"/>
+        <GroupBox Header="Import Class" HorizontalAlignment="Left" Height="72" Margin="387,76,0,0" VerticalAlignment="Top" Width="340">
+            <Grid HorizontalAlignment="Left" Height="45" Margin="-1,10,-2.8,0" VerticalAlignment="Top" Width="331">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="68*"/>
+                    <ColumnDefinition Width="263*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnImport" Content="Import" HorizontalAlignment="Left" Margin="178,0.6,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="1" Click="BtnImport_Click"/>
+                <TextBox x:Name="txtFile" HorizontalAlignment="Left" Height="23" Margin="44,0.6,0,0" TextWrapping="Wrap" Text="File" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="1"/>
+                <Button x:Name="btnChoose" Content="Choose File" HorizontalAlignment="Left" Margin="10,0.6,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Grid.Row="1" Click="BtnChoose_Click"/>
+            </Grid>
+        </GroupBox>
 
     </Grid>
 </Window>

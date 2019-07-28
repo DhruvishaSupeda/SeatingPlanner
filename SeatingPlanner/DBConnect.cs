@@ -292,6 +292,23 @@ namespace SeatingPlanner
             return list;
         }
 
+        public void Import(string path)
+        {
+            string query = "LOAD DATA LOCAL INFILE '" + path + "' REPLACE INTO TABLE student FIELDS TERMINATED BY ',' lines terminated by '\n';";
+
+            if (this.OpenConnection() == true)
+            {
+                //create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+
+                //Execute command
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                this.CloseConnection();
+            }
+        }
+
         //Count statement
         //public int Count()
         //{
