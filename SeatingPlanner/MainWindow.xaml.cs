@@ -26,10 +26,6 @@ namespace SeatingPlanner
     public partial class MainWindow : Window
     {
         DBConnect db = new DBConnect();
-        private string server = "localhost";
-        private string database = "seating_planner";
-        private string uid = "root";
-        private string password = "password";
 
         public MainWindow()
         {
@@ -78,108 +74,58 @@ namespace SeatingPlanner
         {
             OpenFileDialog openfiledialog1 = new OpenFileDialog();
             openfiledialog1.ShowDialog();
-            openfiledialog1.Filter = "allfiles|*.xlsx";
+            //openfiledialog1.Filter = "allfiles|*.xlsx";
             txtFile.Text = openfiledialog1.FileName;
         }
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
-            string path = txtFile.Text;
 
-            string ConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path + ";Extended Properties = Excel 8.0";
-            //string ConnString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + path + "';Extended Properties=\"Excel 12.0;HDR=YES;\"";
-
-            DataTable Data = new DataTable();
-
-            /* using (OleDbConnection conn = new OleDbConnection(ConnString))
+            MessageBoxResult confirmation = System.Windows.MessageBox.Show("This will overwrite the current class of students.", "Warning", MessageBoxButton.OKCancel);
+            if (confirmation == MessageBoxResult.OK)
             {
-                conn.Open();
+                string path = txtFile.Text;
+                Console.WriteLine("THIS DO A THING");
 
-                OleDbCommand cmd = new OleDbCommand(@"SELECT * FROM [Sheet1$]", conn);
-                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-                adapter.Fill(Data);
+                string ConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path + ";Extended Properties = Excel 8.0";
+                //string ConnString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + path + "';Extended Properties=\"Excel 12.0;HDR=YES;\"";
 
-                conn.Close();
-            } */
+                DataTable Data = new DataTable();
 
-            using (OleDbConnection conn = new OleDbConnection(ConnString))
-            {
-                conn.Open();
-                //Get data fro sheet one
-                OleDbDataAdapter objDA = new System.Data.OleDb.OleDbDataAdapter("select * from [Sheet1$]", conn);
-                DataSet excelDataSet = new DataSet();
-                //Put data into dataset
-                objDA.Fill(excelDataSet);
-                //Only one table in dataset so get that table
-                Data = excelDataSet.Tables[0];
-            }
-
-            foreach (DataRow row in Data.Rows)
-            {
-                /*foreach (DataColumn column in Data.Columns)
+                using (OleDbConnection conn = new OleDbConnection(ConnString))
                 {
-                    Console.WriteLine(row[column]);
-                }*/
-                //For each row gets the data
-                string forename = row["forename"].ToString();
-                string surname = row["surname"].ToString();
-                string gender = row["gender"].ToString();
-                string dob = row["dob"].ToString();
-                int window = int.Parse(row["window"].ToString());
-                int door = int.Parse(row["door"].ToString());
-                int front = int.Parse(row["front"].ToString());
-                int grade = int.Parse(row["average_grade"].ToString());
-                //Inserts into the database
-                db.Insert(forename, surname, gender, dob, window, door, front, grade);
+                    conn.Open();
+                    //Get data fro sheet one
+                    OleDbDataAdapter objDA = new System.Data.OleDb.OleDbDataAdapter("select * from [Sheet1$]", conn);
+                    DataSet excelDataSet = new DataSet();
+                    //Put data into dataset
+                    objDA.Fill(excelDataSet);
+                    //Only one table in dataset so get that table
+                    Data = excelDataSet.Tables[0];
+                }
+
+                db.ClearTable();
+
+                foreach (DataRow row in Data.Rows)
+                {
+                    /*foreach (DataColumn column in Data.Columns)
+                    {
+                        Console.WriteLine(row[column]);
+                    }*/
+                    //For each row gets the data
+                    string forename = row["forename"].ToString();
+                    string surname = row["surname"].ToString();
+                    string gender = row["gender"].ToString();
+                    string dob = row["dob"].ToString();
+                    int window = int.Parse(row["window"].ToString());
+                    int door = int.Parse(row["door"].ToString());
+                    int front = int.Parse(row["front"].ToString());
+                    int grade = int.Parse(row["average_grade"].ToString());
+                    //Inserts into the database
+                    db.Insert(forename, surname, gender, dob, window, door, front, grade);
+                }
             }
-            /*
 
-            string connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-            string ConnStr = connectionString;
-            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(ConnStr))
-            {
-                bulkCopy.DestinationTableName = "student";
-                bulkCopy.ColumnMappings.Add("forename", "forename");
-                bulkCopy.ColumnMappings.Add("surname", "surname");
-                bulkCopy.ColumnMappings.Add("dob", "dob");
-                bulkCopy.ColumnMappings.Add("gender", "gender");
-                bulkCopy.ColumnMappings.Add("window", "window");
-                bulkCopy.ColumnMappings.Add("door", "door");
-                bulkCopy.ColumnMappings.Add("front", "front");
-                bulkCopy.ColumnMappings.Add("average_grade", "average_grade");
-                bulkCopy.WriteToServer(Data);
-                System.Windows.MessageBox.Show("UPLOAD SUCCESSFULLY");
-            }
-
-            // MySql Connection Object
-            string connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-            MySqlConnection conn = new MySqlConnection(connectionString);
-
-            // MySQL BulkLoader
-            MySqlBulkLoader bl = new MySqlBulkLoader(conn);
-            bl.TableName = "student";
-            bl.FieldTerminator = ",";
-            bl.LineTerminator = "\n";
-            bl.FileName = path;
-
-            try
-            {
-                Console.WriteLine("Connecting to MySQL...");
-                conn.Open();
-
-                // Upload data from file
-                int count = bl.Load();
-                Console.WriteLine(count + " lines uploaded.");
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            Console.WriteLine("Done.");
-            Console.ReadLine();*/
-            
         }
     }
 }

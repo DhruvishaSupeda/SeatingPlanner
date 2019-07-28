@@ -136,6 +136,17 @@ namespace SeatingPlanner
             }
         }
 
+        public void ClearTable()
+        {
+            string query = "DELETE FROM student";
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                this.CloseConnection();
+            }
+        }
+
 
         //Select statement
         public List<string>[] SelectByRow()
