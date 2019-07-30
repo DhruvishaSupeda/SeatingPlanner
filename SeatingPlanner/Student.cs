@@ -2,7 +2,7 @@
 
 namespace SeatingPlanner
 {
-    internal class Student
+    public class Student
     {
         public string forename { get; set; }
         public string surname { get; set; }

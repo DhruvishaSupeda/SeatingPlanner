@@ -61,6 +61,9 @@
       <DependentUpon>AddStudentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
+    <Compile Include="SortedStudentWindow.xaml.cs">
+      <DependentUpon>SortedStudentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SortStudentWindow.xaml.cs">
       <DependentUpon>SortStudentWindow.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
     <Page Include="AddStudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SortedStudentWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SortStudentWindow.xaml">
       <SubType>Designer</SubType>

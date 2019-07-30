@@ -31,7 +31,7 @@ namespace SeatingPlanner
             //then show that on the table somehow
             //seems the easiest way idk
 
-            //gets array of lists for everything (which is db.Select())
+            //gets array of lists for everything (which is db.convertStudents())
             List<Student> list = db.convertStudents();
             dtgStudents.ItemsSource = list;
         }

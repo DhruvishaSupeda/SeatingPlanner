@@ -85,7 +85,6 @@ namespace SeatingPlanner
             if (confirmation == MessageBoxResult.OK)
             {
                 string path = txtFile.Text;
-                Console.WriteLine("THIS DO A THING");
 
                 string ConnString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path + ";Extended Properties = Excel 8.0";
                 //string ConnString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + path + "';Extended Properties=\"Excel 12.0;HDR=YES;\"";
