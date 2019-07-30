@@ -57,10 +57,9 @@ namespace SeatingPlanner
              */
             int left = 131; //+ 85 to top1 to get below, add 212 to get to next one along to the right
             int leftCounter = 1;
-            bool isTop = true;
             int top1 = 78;
             int top2 = 104;
-            int newleft; int newtop;
+            int newleft; 
             foreach (List<Student> s in newlist)
             {
                 //makes the new left
@@ -78,11 +77,16 @@ namespace SeatingPlanner
                 }
 
                 //now doing the first one
-                System.Windows.Forms.Label sLabel = new System.Windows.Forms.Label();
-                sLabel.Text = s.First().forename + " " + s.First().surname;
-                sLabel.Margin = new Padding(13, 13, 0, 0);
-                //second student
+                System.Windows.Controls.Label sLabel = new System.Windows.Controls.Label();
+                sLabel.Content = s.First().forename + " " + s.First().surname;
+                sLabel.Margin = new Thickness(newleft, top1, 0, 0);
+                mainGrid.Children.Add(sLabel);
 
+                //second student
+                System.Windows.Controls.Label sLabel2 = new System.Windows.Controls.Label();
+                sLabel2.Content = s.Last().forename + " " + s.Last().surname;
+                sLabel2.Margin = new Thickness(newleft, top2, 0, 0);
+                mainGrid.Children.Add(sLabel2);
 
                 //Changes left counter so you go the next place along or new line
                 if (leftCounter == 3)

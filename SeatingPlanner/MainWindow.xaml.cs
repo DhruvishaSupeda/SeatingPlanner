@@ -112,16 +112,22 @@ namespace SeatingPlanner
                         Console.WriteLine(row[column]);
                     }*/
                     //For each row gets the data
-                    string forename = row["forename"].ToString();
-                    string surname = row["surname"].ToString();
-                    string gender = row["gender"].ToString();
-                    string dob = row["dob"].ToString();
-                    int window = int.Parse(row["window"].ToString());
-                    int door = int.Parse(row["door"].ToString());
-                    int front = int.Parse(row["front"].ToString());
-                    int grade = int.Parse(row["average_grade"].ToString());
-                    //Inserts into the database
-                    db.Insert(forename, surname, gender, dob, window, door, front, grade);
+                    if (row["forename"].ToString() != "")
+                    {
+                        Console.Write("Thing...");
+                        string forename = row["forename"].ToString();
+                        string surname = row["surname"].ToString();
+                        string gender = row["gender"].ToString();
+                        string dob = row["dob"].ToString();
+                        // int window = int.Parse(row["window"].ToString());
+                        // string window = row["window"].ToString();
+                        int window = 0; int door = 0; int front = 0;
+                        // int door = int.Parse(row["door"].ToString());
+                        // int front = int.Parse(row["front"].ToString());
+                        int grade = int.Parse(row["average_grade"].ToString());
+                        //Inserts into the database
+                        db.Insert(forename, surname, gender, dob, window, door, front, grade);
+                    }
                 }
             }
 
